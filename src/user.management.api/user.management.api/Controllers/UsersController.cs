@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using user.management.api.Models;
 
 namespace user.management.api.Controllers
@@ -9,21 +8,20 @@ namespace user.management.api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        [HttpGet("")]
-        public ActionResult<IEnumerable<User>> Get()
-        {
-            var user = UserManger.GetById(1);
-            if (user == null)
-                return NotFound();
+        //[HttpGet("")]
+        //public ActionResult<IEnumerable<User>> Get()
+        //{
+        //    var user = UserManager.GetById(1);
+        //    if (user == null)
+        //        return NotFound();
 
-            return Ok(user);
-        }
+        //    return Ok(user);
+        //}
 
-        [AllowAnonymous]
         [HttpGet("login")]
-        public IActionResult Get(string name, string password)
+        public IActionResult Get(string name, [DataType(DataType.Password)] string password)
         {
-            var response = UserManger.Login(name, password);
+            var response = UserManager.Login(name);
             return Ok(response);
         }
     }

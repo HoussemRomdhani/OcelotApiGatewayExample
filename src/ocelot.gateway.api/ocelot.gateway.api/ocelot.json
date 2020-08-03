@@ -12,7 +12,21 @@
           "Host": "localhost",
           "Port": 5001
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": []
+      },
+
+      "AddHeadersToRequest": {
+        "userId": "Claims[userId] > value"
+      },
+      //"AddClaimsToRequest": {
+      //  "Permission1": "Claims[Permission] > value"
+      //}
+      "RouteClaimsRequirement": {
+        "Permission": "PRODUCTS_TEST"
+      }
     },
     {
       "UpstreamPathTemplate": "/users",
@@ -26,11 +40,11 @@
           "Host": "localhost",
           "Port": 5002
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "TestKey",
-        "AllowedScopes": []
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "TestKey",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "UpstreamPathTemplate": "/users/login",
@@ -45,6 +59,10 @@
           "Port": 5002
         }
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "TestKey",
+      //  "AllowedScopes": []
+      //}
     }
   ],
   "GlobalConfiguration": {

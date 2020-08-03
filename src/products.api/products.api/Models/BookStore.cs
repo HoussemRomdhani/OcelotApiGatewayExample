@@ -7,14 +7,14 @@ namespace products.api.Models
     {
         private static IEnumerable<Book> _books = new List<Book>
         {
-            new Book(1, "ANGULAR 9 In Action", "Google Team", 49),
-            new Book(2, "REACT In Action", "Facebook Team", 39),
-            new Book(3, ".NET CORE 3.1 In Action", "Microsoft Team", 59),
+            new Book(1, "ANGULAR 9 In Action", "Google Team", 49, 1),
+            new Book(2, "REACT In Action", "Facebook Team", 39, 2),
+            new Book(3, ".NET CORE 3.1 In Action", "Microsoft Team", 59, 1),
         };
 
-        public  static IEnumerable<Book> GetAll()
+        public  static IEnumerable<Book> GetAll(int ownerId)
         {
-            return _books;
+            return _books.Where(x=> x.OwnerId == ownerId);
         }
         public static Book GetById(int id)
         {
